@@ -18,7 +18,14 @@ def test_answer2(read_modules):
 
 
 @pytest.mark.parametrize(
-    "input, expected", [([12], 2), ([14.0], 2), ([1969], 654), ([100756], 33583), ([12, 14, 1969, 100756], (2 + 2 + 654 + 33583))]
+    "input, expected",
+    [
+        ([12], 2),
+        ([14.0], 2),
+        ([1969], 654),
+        ([100756], 33583),
+        ([12, 14, 1969, 100756], (2 + 2 + 654 + 33583)),
+    ],
 )
 def test_fuel_1(input, expected):
     assert day1.total_fuel(input) == expected

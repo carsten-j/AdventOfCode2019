@@ -3,18 +3,27 @@ import pytest
 import utilities
 
 
-def test_answer_1():
-    result = day2.computer_v1("input_day2.txt", 12, 2)
+@pytest.fixture
+def read_input():
+    with open("input_day2.txt") as f:
+        array = []
+        for line in f:
+            array = array + [int(x) for x in line.split(",")]
+    return array
+
+
+def test_answer_1(read_input):
+    result = day2.computer_v1(read_input, 12, 2)
     assert result == 5482655
 
 
-def test_answer_2():
-    result = day2.computer_v2("input_day2.txt")
+def test_answer_2(read_input):
+    result = day2.computer_v2(read_input)
     assert result == 4967
 
 
 def test_computer():
-    program = day2.read_input("input_day2.1.txt")
+    program = [1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
     result = day2.compute(program)
     expected = [3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50]
     utilities.compare_lists(result, expected)

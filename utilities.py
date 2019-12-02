@@ -2,13 +2,14 @@ import time
 
 
 def timer(func):
-    def wrapper(*args, **kwargs):
-        start_time = time.time()
+    def call_func(*args, **kwargs):
+        start_time = time.process_time()
         result = func(*args, **kwargs)
-        print(f"\nTime required: {(time.time() - start_time)*1000:.2f} ms\n")
+        end_time = time.process_time() - start_time
+        print(f"\nExecution time: {end_time*1000:.3f} ms\n")
         return result
 
-    return wrapper
+    return call_func
 
 
 def compare_lists(result, expected):

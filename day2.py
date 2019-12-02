@@ -22,32 +22,15 @@ def compute(program, verb=None, noun=None):
 
 
 @utilities.timer
-def computer_v1(filename, verb=None, noun=None):
-    program = read_input(filename)
+def computer_v1(program, verb=None, noun=None):
     output = compute(program, verb=verb, noun=noun)
     return output[0]
 
 
 @utilities.timer
-def computer_v2(filename):
-    program = read_input(filename)
-
+def computer_v2(program):
     for verb in range(100):
         for noun in range(100):
             result = compute(program[:], verb=verb, noun=noun)
             if result[0] == 19690720:
                 return 100 * verb + noun
-
-
-def read_input(filename):
-    with open(filename) as f:
-        array = []
-        for line in f:
-            line = line.rstrip(",\n")
-            array = array + [int(x) for x in line.split(",")]
-    return array
-
-
-print(f"Result: {computer_v1('input_day2.txt', 12, 2)}")
-
-print(f"Result: {computer_v2('input_day2.txt')}")

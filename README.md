@@ -9,3 +9,24 @@ This is the first year where I participate in Advent of Code. I am still in the 
 | 2             | 1202 Program Alarm                  | Deep copying a list is fast using slice notation |
 | 3             | Crossed Wires                       |   |
 
+
+# Installation and execution of solution and tests
+Clone repository into a new folder and execute
+```shell
+python -m venv .venv
+```
+to create a virtual environment and activate it by calling
+
+```shell
+. .venv/bin/activate
+```
+
+Install required packages with
+```shell
+pip install -r requirements.txt
+```
+
+and run tests including solutions with
+```shell
+pytest
+```

@@ -30,3 +30,7 @@ and run tests including solutions with
 ```shell
 pytest
 ```
+
+# Visualization of wires from day 3
+
+![](https://github.com/carsten-j/advent_of_code_2019/blob/master/wires.png)

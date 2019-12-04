@@ -59,6 +59,39 @@ def generate_wire(wire):
     return positions, steps
 
 
+def generate_wire_positions(wire):
+    positions = list()
+    last_pos = (0, 0)
+    for w in wire:
+        pos = last_pos
+        if w.startswith("R"):
+            new_pos = (pos[0] + int(w[1:]), pos[1])
+        elif w.startswith("L"):
+            new_pos = (pos[0] - int(w[1:]), pos[1])
+        elif w.startswith("U"):
+            new_pos = (pos[0], pos[1] + int(w[1:]))
+        elif w.startswith("D"):
+            new_pos = (pos[0], pos[1] - int(w[1:]))
+        last_pos = new_pos
+        positions.append(new_pos)
+    return positions
+
+
+def generate_visualization_data():
+    paths = read_input("input_day3.txt")
+
+    wire1 = generate_wire_positions(paths[0])
+    wire2 = generate_wire_positions(paths[1])
+
+    f = open("wire1.txt", "w+")
+    f.write(repr(wire1))
+    f.close()
+
+    f = open("wire2.txt", "w+")
+    f.write(repr(wire2))
+    f.close()
+
+
 @utilities.timer
 def distance_exercise1():
     paths = read_input("input_day3.txt")
